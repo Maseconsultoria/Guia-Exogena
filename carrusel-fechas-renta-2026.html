@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es-CO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrusel · Fechas declaración de renta 2026 · MASE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-base:#0D0D0D; --bg-section:#141414; --surface-card:#1A1A1A;
+    --surface-elev:#242424; --border:#2E2E2E;
+    --accent:#E94E1B; --accent-vibrant:#F39200; --gold:#F9B233; --press:#C53D11;
+    --on-accent:#2A0D04;
+    --text-strong:#F5F0EA; --text-soft:#A8A8A4; --text-meta:#888780; --brand-gray:#575756;
+    --ok:#6FA82E; --warn:#F9B233; --danger:#E24B4A;
+    --hairline:rgba(255,255,255,.07);
+    --shadow-md:0 6px 18px rgba(0,0,0,.45);
+    --shadow-lg:0 18px 48px rgba(0,0,0,.55);
+    --glow:0 8px 28px rgba(233,78,27,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#000;font-family:'Montserrat',sans-serif;color:var(--text-strong);-webkit-font-smoothing:antialiased}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .eyebrow{font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent-vibrant)}
+
+  .slide{width:1080px;height:1350px;margin:0 auto 40px;position:relative;overflow:hidden;
+    background:var(--bg-base);display:flex;flex-direction:column;padding:72px}
+  .slide-section{background:var(--bg-section)}
+
+  .glow-hero{position:absolute;top:-220px;right:-220px;width:760px;height:760px;border-radius:50%;
+    background:radial-gradient(circle,rgba(233,78,27,.18) 0%,rgba(233,78,27,0) 65%);pointer-events:none}
+
+  .doc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px;position:relative;z-index:2}
+  .logo{font-weight:900;font-size:28px;letter-spacing:-1px}
+  .logo .dot{color:var(--accent)}
+  .page-num{font-family:'JetBrains Mono',monospace;font-size:15px;color:var(--text-meta)}
+  .page-num b{color:var(--accent-vibrant)}
+
+  /* PORTADA */
+  .cover{justify-content:center}
+  .cover .eyebrow{margin-bottom:26px}
+  .cover h1{font-weight:900;font-size:96px;line-height:.96;letter-spacing:-2px;margin-bottom:28px}
+  .cover h1 span{color:var(--accent)}
+  .cover .lead{font-size:26px;color:var(--text-soft);max-width:800px;line-height:1.45;margin-bottom:52px}
+  .cover .datebar{display:inline-flex;align-items:center;gap:18px;background:var(--surface-card);
+    border-radius:12px;padding:24px 32px;position:relative;overflow:hidden;box-shadow:var(--shadow-md);margin-bottom:44px}
+  .cover .datebar::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)}
+  .cover .datebar .mono{font-size:32px;font-weight:700;color:var(--text-strong)}
+  .cover .datebar .sep{color:var(--accent-vibrant);font-size:24px}
+  .cover .datebar .lbl{font-size:14px;color:var(--text-meta);text-transform:uppercase;letter-spacing:1px}
+  .swipe{position:absolute;bottom:72px;left:72px;right:72px;display:flex;justify-content:space-between;
+    align-items:center;border-top:1px solid var(--hairline);padding-top:26px}
+  .swipe .slogan{font-size:18px;font-weight:600;letter-spacing:1px;color:var(--gold)}
+  .swipe .arrow{display:inline-flex;align-items:center;gap:10px;font-size:16px;font-weight:600;color:var(--text-soft)}
+  .swipe .arrow svg{stroke:var(--accent)}
+
+  /* TÍTULO GENÉRICO */
+  .head-block{margin-bottom:36px}
+  .head-block .eyebrow{margin-bottom:14px}
+  .head-block h2{font-weight:800;font-size:56px;letter-spacing:-1px;line-height:1.04}
+  .head-block h2 span{color:var(--accent)}
+  .head-block p{font-size:22px;color:var(--text-soft);line-height:1.5;margin-top:16px;max-width:860px}
+
+  /* LISTA "quiénes declaran" */
+  .req-list{display:flex;flex-direction:column;gap:18px;flex:1;justify-content:center}
+  .req{background:var(--surface-card);border-radius:12px;padding:30px 34px;position:relative;
+    overflow:hidden;display:flex;align-items:center;gap:24px}
+  .req::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)}
+  .req .rq-ic{flex-shrink:0;width:52px;height:52px;border-radius:10px;background:rgba(233,78,27,.14);
+    display:flex;align-items:center;justify-content:center}
+  .req .rq-ic svg{stroke:var(--accent-vibrant)}
+  .req .rq-txt h4{font-weight:700;font-size:23px;margin-bottom:4px}
+  .req .rq-txt p{font-size:17px;color:var(--text-soft);line-height:1.4}
+  .req .rq-txt .mono{color:var(--text-strong);font-weight:500}
+
+  /* CÓMO LEER LA TABLA */
+  .how{flex:1;display:flex;flex-direction:column;justify-content:center;gap:24px}
+  .how-card{background:var(--surface-card);border-radius:12px;padding:36px 40px;position:relative;overflow:hidden}
+  .how-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold)}
+  .how-card .num{font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--gold);font-weight:700;margin-bottom:10px}
+  .how-card h4{font-weight:700;font-size:26px;margin-bottom:8px}
+  .how-card p{font-size:19px;color:var(--text-soft);line-height:1.5}
+  .how-card p b{color:var(--text-strong)}
+  .example-chip{display:inline-flex;align-items:center;gap:14px;margin-top:16px;background:var(--surface-elev);
+    border-radius:8px;padding:14px 20px}
+  .example-chip .cc{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--text-strong)}
+  .example-chip .ar{color:var(--accent);font-size:20px}
+  .example-chip .dd{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:700;color:var(--accent-vibrant)}
+
+  /* TABLA DE FECHAS */
+  .table-wrap{flex:1;display:flex;flex-direction:column}
+  .month-tag{display:inline-flex;align-self:flex-start;align-items:center;gap:12px;
+    background:rgba(233,78,27,.14);border-radius:999px;padding:12px 26px;margin-bottom:26px}
+  .month-tag .dot-o{width:10px;height:10px;border-radius:50%;background:var(--accent)}
+  .month-tag span{font-size:20px;font-weight:700;color:var(--accent-vibrant);letter-spacing:.5px}
+  .date-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 20px;flex:1;align-content:start}
+  .date-grid.cols3{grid-template-columns:1fr 1fr 1fr}
+  .date-row{background:var(--surface-card);border-radius:10px;padding:20px 22px;position:relative;
+    overflow:hidden;display:flex;align-items:center;justify-content:space-between}
+  .date-row::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+  .date-row .cc{font-family:'JetBrains Mono',monospace;font-size:24px;font-weight:700;color:var(--text-strong);letter-spacing:1px}
+  .date-row .dd{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:500;color:var(--accent-vibrant)}
+  .table-note{margin-top:22px;font-size:16px;color:var(--text-meta);line-height:1.4}
+
+  /* SANCIÓN */
+  .warn-slide{justify-content:center}
+  .warn-card{background:var(--surface-card);border-radius:16px;padding:56px 52px;position:relative;
+    overflow:hidden;box-shadow:var(--shadow-lg)}
+  .warn-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--danger)}
+  .warn-ic{width:64px;height:64px;border-radius:14px;background:rgba(226,75,74,.14);
+    display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+  .warn-ic svg{stroke:var(--danger)}
+  .warn-card h2{font-weight:800;font-size:48px;letter-spacing:-1px;line-height:1.05;margin-bottom:20px}
+  .warn-card > p{font-size:22px;color:var(--text-soft);line-height:1.5;margin-bottom:32px}
+  .warn-stats{display:flex;gap:20px}
+  .wstat{flex:1;background:var(--surface-elev);border-radius:10px;padding:26px;position:relative;overflow:hidden}
+  .wstat::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--danger)}
+  .wstat .big{font-family:'JetBrains Mono',monospace;font-size:34px;font-weight:700;color:var(--text-strong);margin-bottom:6px}
+  .wstat .cap{font-size:15px;color:var(--text-soft);line-height:1.35}
+
+  /* CTA */
+  .cta-slide{justify-content:center;align-items:center;text-align:center}
+  .cta-card{background:var(--surface-card);border-radius:16px;padding:72px 60px;max-width:860px;
+    position:relative;box-shadow:var(--shadow-lg);overflow:hidden}
+  .cta-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--accent)}
+  .cta-card .eyebrow{margin-bottom:22px}
+  .cta-card h2{font-weight:900;font-size:56px;letter-spacing:-1px;line-height:1.04;margin-bottom:22px}
+  .cta-card p{font-size:22px;color:var(--text-soft);line-height:1.5;margin-bottom:42px}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--accent);color:var(--on-accent);
+    font-weight:700;font-size:22px;padding:22px 46px;border-radius:8px;box-shadow:var(--glow);text-decoration:none}
+  .btn svg{stroke:var(--on-accent)}
+  .cta-slogan{margin-top:44px;font-size:18px;font-weight:600;letter-spacing:1px;color:var(--gold)}
+
+  .foot-rule{position:absolute;bottom:72px;left:72px;right:72px;border-top:1px solid var(--hairline);
+    padding-top:22px;display:flex;justify-content:space-between;align-items:center}
+  .foot-rule span{font-size:14px;color:var(--text-meta)}
+  .foot-rule .src{font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE 1 · PORTADA ═══ -->
+<section class="slide cover" data-document-role="page" data-label="Portada">
+  <div class="glow-hero"></div>
+  <div class="doc-head">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num">RENTA · <b>2026</b></div>
+  </div>
+  <div class="eyebrow">Personas naturales · Año gravable 2025</div>
+  <h1>Fechas para<br>declarar <span>renta</span>.</h1>
+  <p class="lead">Tu fecha límite depende de los dos últimos dígitos de tu cédula. Aquí tienes el calendario completo, oficial y sin letra pequeña.</p>
+  <div class="datebar">
+    <div>
+      <div class="lbl">Inicia</div>
+      <div class="mono">12 ago</div>
+    </div>
+    <div class="sep">→</div>
+    <div>
+      <div class="lbl">Finaliza</div>
+      <div class="mono">26 oct</div>
+    </div>
+  </div>
+  <div class="swipe">
+    <span class="slogan">Siente · Conecta · Transforma</span>
+    <span class="arrow">Desliza
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </span>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 2 · ¿QUIÉNES DECLARAN? ═══ -->
+<section class="slide slide-section" data-document-role="page" data-label="Quienes declaran">
+  <div class="doc-head">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num"><b>01</b> / 07</div>
+  </div>
+  <div class="head-block">
+    <div class="eyebrow">Primero lo primero</div>
+    <h2>¿Estás <span>obligado</span> a declarar?</h2>
+    <p>Declaras si en 2025 superaste al menos uno de estos topes. Basta con cumplir uno.</p>
+  </div>
+  <div class="req-list">
+    <div class="req">
+      <div class="rq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="rq-txt"><h4>Ingresos totales</h4><p>Iguales o superiores a <span class="mono">$69.718.600</span> en el año.</p></div>
+    </div>
+    <div class="req">
+      <div class="rq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
+      <div class="rq-txt"><h4>Patrimonio bruto</h4><p>Igual o superior a <span class="mono">$224.095.500</span> al cierre de 2025.</p></div>
+    </div>
+    <div class="req">
+      <div class="rq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+      <div class="rq-txt"><h4>Consumos con tarjeta de crédito</h4><p>Acumulado superior a <span class="mono">$69.718.600</span>.</p></div>
+    </div>
+    <div class="req">
+      <div class="rq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+      <div class="rq-txt"><h4>Compras y consumos totales</h4><p>Iguales o superiores a <span class="mono">$69.718.600</span>.</p></div>
+    </div>
+    <div class="req">
+      <div class="rq-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+      <div class="rq-txt"><h4>Consignaciones o inversiones</h4><p>Acumulado igual o mayor a <span class="mono">$69.718.600</span>.</p></div>
+    </div>
+  </div>
+  <div class="foot-rule">
+    <span>MASE Consultoría</span>
+    <span class="src">Topes año gravable 2025</span>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 3 · CÓMO LEER LA TABLA ═══ -->
+<section class="slide" data-document-role="page" data-label="Como leer la tabla">
+  <div class="doc-head">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num"><b>02</b> / 07</div>
+  </div>
+  <div class="head-block">
+    <div class="eyebrow">Cómo funciona</div>
+    <h2>Tu fecha sale de<br>tu <span>cédula</span>.</h2>
+  </div>
+  <div class="how">
+    <div class="how-card">
+      <div class="num">01</div>
+      <h4>Mira los dos últimos dígitos</h4>
+      <p>Toma tu número de cédula y fíjate en los <b>dos últimos números</b>, sin el dígito de verificación.</p>
+      <div class="example-chip">
+        <span class="cc">…45</span>
+        <span class="ar">→</span>
+        <span class="dd">15 sep</span>
+      </div>
+    </div>
+    <div class="how-card">
+      <div class="num">02</div>
+      <h4>Busca ese rango en la tabla</h4>
+      <p>En las siguientes páginas están los <b>50 rangos</b> con su fecha exacta, ordenados por mes. Encuentra el tuyo y agéndalo.</p>
+    </div>
+    <div class="how-card">
+      <div class="num">03</div>
+      <h4>Esa es tu fecha límite</h4>
+      <p>Presenta <b>antes o ese día</b>. Un día tarde ya genera sanción. No esperes al final: el portal se congestiona.</p>
+    </div>
+  </div>
+  <div class="foot-rule">
+    <span>MASE Consultoría</span>
+    <span class="src">Según dos últimos dígitos de cédula</span>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 4 · AGOSTO ═══ -->
+<section class="slide slide-section" data-document-role="page" data-label="Fechas agosto">
+  <div class="doc-head">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num"><b>03</b> / 07</div>
+  </div>
+  <div class="head-block" style="margin-bottom:24px">
+    <div class="eyebrow">Calendario · Parte 1</div>
+    <h2>Vencen en <span>agosto</span></h2>
+  </div>
+  <div class="table-wrap">
+    <div class="month-tag"><span class="dot-o"></span><span>AGOSTO 2026</span></div>
+    <div class="date-grid">
+      <div class="date-row"><span class="cc">01-02</span><span class="dd">12 ago</span></div>
+      <div class="date-row"><span class="cc">03-04</span><span class="dd">13 ago</span></div>
+      <div class="date-row"><span class="cc">05-06</span><span class="dd">14 ago</span></div>
+      <div class="date-row"><span class="cc">07-08</span><span class="dd">18 ago</span></div>
+      <div class="date-row"><span class="cc">09-10</span><span class="dd">19 ago</span></div>
+      <div class="date-row"><span class="cc">11-12</span><span class="dd">20 ago</span></div>
+      <div class="date-row"><span class="cc">13-14</span><span class="dd">21 ago</span></div>
+      <div class="date-row"><span class="cc">15-16</span><span class="dd">24 ago</span></div>
+      <div class="date-row"><span class="cc">17-18</span><span class="dd">25 ago</span></div>
+      <div class="date-row"><span class="cc">19-20</span><span class="dd">26 ago</span></div>
+      <div class="date-row"><span class="cc">21-22</span><span class="dd">27 ago</span></div>
+      <div class="date-row"><span class="cc">23-24</span><span class="dd">28 ago</span></div>
+      <div class="date-row"><span class="cc">25-26</span><span class="dd">31 ago</span></div>
+    </div>
+    <div class="table-note">Los fines de semana y festivos no cuentan, por eso hay saltos entre días.</div>
+  </div>
+  <div class="foot-rule">
+    <span>MASE Consultoría</span>
+    <span class="src">Fuente: Calendario Tributario DIAN 2026</span>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 5 · SEPTIEMBRE ═══ -->
+<section class="slide" data-document-role="page" data-label="Fechas septiembre">
+  <div class="doc-head">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num"><b>04</b> / 07</div>
+  </div>
+  <div class="head-block" style="margin-bottom:24px">
+    <div class="eyebrow">Calendario · Parte 2</div>
+    <h2>Vencen en <span>septiembre</span></h2>
+  </div>
+  <div class="table-wrap">
+    <div class="month-tag"><span class="dot-o"></span><span>SEPTIEMBRE 2026</span></div>
+    <div class="date-grid">
+      <div class="date-row"><span class="cc">27-28</span><span class="dd">1 sep</span></div>
+      <div class="date-row"><span class="cc">29-30</span><span class="dd">2 sep</span></div>
+      <div class="date-row"><span class="cc">31-32</span><span class="dd">3 sep</span></div>
+      <div class="date-row"><span class="cc">33-34</span><span class="dd">4 sep</span></div>
+      <div class="date-row"><span class="cc">35-36</span><span class="dd">7 sep</span></div>
+      <div class="date-row"><span class="cc">37-38</span><span class="dd">8 sep</span></div>
+      <div class="date-row"><span class="cc">39-40</span><span class="dd">9 sep</span></div>
+      <div class="date-row"><span class="cc">41-42</span><span class="dd">10 sep</span></div>
+      <div class="date-row"><span class="cc">43-44</span><span class="dd">11 sep</span></div>
+      <div class="date-row"><span class="cc">45-46</span><span class="dd">14 sep</span></div>
+      <div class="date-row"><span class="cc">47-48</span><span class="dd">15 sep</span></div>
+      <div class="date-row"><span class="cc">49-50</span><span class="dd">16 sep</span></div>
+      <div class="date-row"><span class="cc">51-52</span><span class="dd">17 sep</span></div>
+      <div class="date-row"><span class="cc">53-54</span><span class="dd">18 sep</span></div>
+      <div class="date-row"><span class="cc">55-56</span><span class="dd">21 sep</span></div>
+      <div class="date-row"><span class="cc">57-58</span><span class="dd">22 sep</span></div>
+      <div class="date-row"><span class="cc">59-60</span><span class="dd">23 sep</span></div>
+      <div class="date-row"><span class="cc">61-62</span><span class="dd">24 sep</span></div>
+      <div class="date-row"><span class="cc">63-64</span><span class="dd">25 sep</span></div>
+      <div class="date-row"><span class="cc">65-66</span><span class="dd">28 sep</span></div>
+    </div>
+  </div>
+  <div class="foot-rule">
+    <span>MASE Consultoría</span>
+    <span class="src">Fuente: Calendario Tributario DIAN 2026</span>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 6 · OCTUBRE ═══ -->
+<section class="slide slide-section" data-document-role="page" data-label="Fechas octubre">
+  <div class="doc-head">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num"><b>05</b> / 07</div>
+  </div>
+  <div class="head-block" style="margin-bottom:24px">
+    <div class="eyebrow">Calendario · Parte 3</div>
+    <h2>Vencen en <span>octubre</span></h2>
+  </div>
+  <div class="table-wrap">
+    <div class="month-tag"><span class="dot-o"></span><span>OCTUBRE 2026</span></div>
+    <div class="date-grid">
+      <div class="date-row"><span class="cc">67-68</span><span class="dd">1 oct</span></div>
+      <div class="date-row"><span class="cc">69-70</span><span class="dd">2 oct</span></div>
+      <div class="date-row"><span class="cc">71-72</span><span class="dd">5 oct</span></div>
+      <div class="date-row"><span class="cc">73-74</span><span class="dd">6 oct</span></div>
+      <div class="date-row"><span class="cc">75-76</span><span class="dd">7 oct</span></div>
+      <div class="date-row"><span class="cc">77-78</span><span class="dd">8 oct</span></div>
+      <div class="date-row"><span class="cc">79-80</span><span class="dd">9 oct</span></div>
+      <div class="date-row"><span class="cc">81-82</span><span class="dd">13 oct</span></div>
+      <div class="date-row"><span class="cc">83-84</span><span class="dd">14 oct</span></div>
+      <div class="date-row"><span class="cc">85-86</span><span class="dd">15 oct</span></div>
+      <div class="date-row"><span class="cc">87-88</span><span class="dd">16 oct</span></div>
+      <div class="date-row"><span class="cc">89-90</span><span class="dd">19 oct</span></div>
+      <div class="date-row"><span class="cc">91-92</span><span class="dd">20 oct</span></div>
+      <div class="date-row"><span class="cc">93-94</span><span class="dd">21 oct</span></div>
+      <div class="date-row"><span class="cc">95-96</span><span class="dd">22 oct</span></div>
+      <div class="date-row"><span class="cc">97-98</span><span class="dd">23 oct</span></div>
+      <div class="date-row" style="background:var(--surface-elev)"><span class="cc">99-00</span><span class="dd">26 oct</span></div>
+    </div>
+    <div class="table-note">El 26 de octubre es la última fecha del calendario para personas naturales.</div>
+  </div>
+  <div class="foot-rule">
+    <span>MASE Consultoría</span>
+    <span class="src">Fuente: Calendario Tributario DIAN 2026</span>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 7 · SANCIÓN ═══ -->
+<section class="slide warn-slide" data-document-role="page" data-label="Que pasa si no declaras">
+  <div class="doc-head" style="position:absolute;top:72px;left:72px;right:72px">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num"><b>06</b> / 07</div>
+  </div>
+  <div class="warn-card">
+    <div class="warn-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+    <h2>Declarar tarde<br>cuesta caro.</h2>
+    <p>Presentar un solo día después de tu fecha activa una sanción automática. No importa si tu resultado da cero.</p>
+    <div class="warn-stats">
+      <div class="wstat">
+        <div class="big">5%</div>
+        <div class="cap">del impuesto a cargo por cada mes o fracción de retraso.</div>
+      </div>
+      <div class="wstat">
+        <div class="big">$523.740</div>
+        <div class="cap">sanción mínima 2026, incluso sin impuesto a cargo.</div>
+      </div>
+    </div>
+  </div>
+  <div class="foot-rule">
+    <span>MASE Consultoría</span>
+    <span class="src">Estatuto Tributario · UVT 2026 $52.374</span>
+  </div>
+</section>
+
+<!-- ═══ SLIDE 8 · CTA ═══ -->
+<section class="slide cta-slide" data-document-role="page" data-label="CTA MASE Declara">
+  <div class="glow-hero"></div>
+  <div class="doc-head" style="position:absolute;top:72px;left:72px;right:72px">
+    <div class="logo">MASE<span class="dot">.</span></div>
+    <div class="page-num"><b>07</b> / 07</div>
+  </div>
+  <div class="cta-card">
+    <div class="eyebrow">No lo dejes para lo último</div>
+    <h2>¿No sabes si te toca declarar?</h2>
+    <p>Con MASE Declara lo averiguas gratis en minutos. Sube tu exógena y te decimos si estás obligado y qué sigue.</p>
+    <a href="#" class="btn">
+      Averígualo con MASE Declara
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+    <div class="cta-slogan">Siente · Conecta · Transforma</div>
+  </div>
+</section>
+
+</body>
+</html>
